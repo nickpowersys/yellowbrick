@@ -75,7 +75,7 @@ class ConfusionMatrixTests(VisualTestCase):
     """
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_confusion_matrix(self):
         """
@@ -104,7 +104,7 @@ class ConfusionMatrixTests(VisualTestCase):
            [ 0,  0,  0,  0,  0,  0,  0,  1,  1, 35]]))
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_no_classes_provided(self):
         """
@@ -267,7 +267,7 @@ class ConfusionMatrixTests(VisualTestCase):
         assert  ylabels == classes
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_pandas_integration(self):
@@ -298,7 +298,7 @@ class ConfusionMatrixTests(VisualTestCase):
         ]))
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_quick_method(self):
         """

@@ -39,7 +39,7 @@ corpus = load_hobbies()
 class FreqDistTests(VisualTestCase):
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_integrated_freqdist(self):
         """

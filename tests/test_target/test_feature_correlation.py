@@ -49,7 +49,7 @@ class TestFeatureCorrelationVisualizer(VisualTestCase):
     labels = data['feature_names']
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_feature_correlation_integrated_pearson(self):
         """
@@ -63,7 +63,7 @@ class TestFeatureCorrelationVisualizer(VisualTestCase):
         self.assert_images_similar(viz)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_feature_correlation_integrated_mutual_info_regression(self):
         """
@@ -76,7 +76,7 @@ class TestFeatureCorrelationVisualizer(VisualTestCase):
         self.assert_images_similar(viz)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_feature_correlation_integrated_mutual_info_classification(self):
         """
@@ -197,7 +197,7 @@ class TestFeatureCorrelationVisualizer(VisualTestCase):
         assert np.all(viz.scores_[:-1] <= viz.scores_[1:])
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_feature_correlation_quick_method(self):
         """

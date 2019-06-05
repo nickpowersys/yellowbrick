@@ -98,7 +98,7 @@ class TestRFECV(VisualTestCase):
         assert oz._wrapped is oz.rfe_estimator_
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_rfecv_classification(self):
         """
@@ -112,7 +112,7 @@ class TestRFECV(VisualTestCase):
         self.assert_images_similar(oz, remove_legend=True)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.filterwarnings('ignore:F-score is ill-defined')
     def test_quick_method(self):
@@ -128,7 +128,7 @@ class TestRFECV(VisualTestCase):
         self.assert_images_similar(ax=ax, remove_legend=True)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_pandas_integration(self):
@@ -149,7 +149,7 @@ class TestRFECV(VisualTestCase):
         self.assert_images_similar(oz, remove_legend=True)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_numpy_integration(self):
         """

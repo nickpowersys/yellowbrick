@@ -72,7 +72,7 @@ class TestLearningCurve(VisualTestCase, DatasetMixin):
             assert hasattr(oz, param)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_classifier(self):
         """
@@ -88,7 +88,7 @@ class TestLearningCurve(VisualTestCase, DatasetMixin):
         self.assert_images_similar(oz)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_regressor(self):
         """
@@ -116,7 +116,7 @@ class TestLearningCurve(VisualTestCase, DatasetMixin):
         self.assert_images_similar(oz, tol=10)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_quick_method(self):
         """
@@ -132,7 +132,7 @@ class TestLearningCurve(VisualTestCase, DatasetMixin):
         self.assert_images_similar(ax=ax)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_pandas_integration(self):

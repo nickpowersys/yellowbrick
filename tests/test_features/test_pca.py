@@ -62,7 +62,7 @@ class PCADecompositionTests(VisualTestCase):
     """
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows (RMSE=4)"
+        sys.platform == 'wwwww', reason="images not close on windows (RMSE=4)"
     )
     def test_pca_decomposition_quick_method(self):
         """
@@ -74,7 +74,7 @@ class PCADecompositionTests(VisualTestCase):
         self.assert_images_similar(ax=ax, tol=5)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows (RMSE=?)"
+        sys.platform == 'wwwww', reason="images not close on windows (RMSE=?)"
     )
     def test_scale_true_2d(self):
         """
@@ -105,7 +105,7 @@ class PCADecompositionTests(VisualTestCase):
         assert pca_array.shape == (self.dataset.X.shape[0], 2)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows (RMSE=3)"
+        sys.platform == 'wwwww', reason="images not close on windows (RMSE=3)"
     )
     def test_biplot_2d(self):
         """
@@ -153,7 +153,7 @@ class PCADecompositionTests(VisualTestCase):
         assert pca_array.shape == (self.dataset.X.shape[0], 3)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows (RMSE=3)"
+        sys.platform == 'wwwww', reason="images not close on windows (RMSE=3)"
     )
     def test_biplot_3d(self):
         """

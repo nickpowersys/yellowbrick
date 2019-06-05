@@ -110,7 +110,7 @@ class TestRadViz(VisualTestCase):
         self.assert_images_similar(visualizer, tol=0.25)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_integrated_radviz_with_pandas(self):
@@ -129,7 +129,7 @@ class TestRadViz(VisualTestCase):
         self.assert_images_similar(visualizer, tol=0.1)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_integrated_radviz_with_numpy(self):
         """
@@ -148,7 +148,7 @@ class TestRadViz(VisualTestCase):
 
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_integrated_radviz_pandas_classes_features(self):
@@ -175,7 +175,7 @@ class TestRadViz(VisualTestCase):
         self.assert_images_similar(visualizer, tol=0.1)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_integrated_radviz_numpy_classes_features(self):
         """

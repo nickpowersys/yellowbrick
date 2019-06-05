@@ -55,7 +55,7 @@ class TestDiscriminationThreshold(VisualTestCase, DatasetMixin):
     """
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_binary_discrimination_threshold(self):
         """
@@ -92,7 +92,7 @@ class TestDiscriminationThreshold(VisualTestCase, DatasetMixin):
             visualizer.fit(X, y)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_pandas_integration(self):
@@ -165,7 +165,7 @@ class TestDiscriminationThreshold(VisualTestCase, DatasetMixin):
             assert "{}_upper".format(metric) in visualizer.cv_scores_
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_binary_discrimination_threshold_alt_args(self):
         """

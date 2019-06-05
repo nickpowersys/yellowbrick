@@ -225,7 +225,7 @@ class TestResidualsPlot(VisualTestCase, DatasetMixin):
     """
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows (RMSE=32)"
+        sys.platform == 'wwwww', reason="images not close on windows (RMSE=32)"
     )
     def test_residuals_plot(self):
         """
@@ -242,7 +242,7 @@ class TestResidualsPlot(VisualTestCase, DatasetMixin):
         self.assert_images_similar(visualizer, tol=1, remove_legend=True)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows (RMSE=32)"
+        sys.platform == 'wwwww', reason="images not close on windows (RMSE=32)"
     )
     @pytest.mark.filterwarnings("ignore:Stochastic Optimizer")
     def test_residuals_plot_no_histogram(self):
@@ -287,7 +287,7 @@ class TestResidualsPlot(VisualTestCase, DatasetMixin):
             self.fail(e)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows (RMSE=32)"
+        sys.platform == 'wwwww', reason="images not close on windows (RMSE=32)"
     )
     def test_residuals_quick_method(self):
         """
@@ -303,7 +303,7 @@ class TestResidualsPlot(VisualTestCase, DatasetMixin):
         self.assert_images_similar(ax=ax, tol=1, remove_legend=True)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows (RMSE=32)"
+        sys.platform == 'wwwww', reason="images not close on windows (RMSE=32)"
     )
     @pytest.mark.skipif(pd is None, reason="pandas is required")
     def test_residuals_plot_pandas(self):

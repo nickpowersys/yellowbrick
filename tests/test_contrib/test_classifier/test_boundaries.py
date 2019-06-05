@@ -359,7 +359,7 @@ class DecisionBoundariesVisualizerTest(VisualTestCase):
         self.assertEquals(visualizer.features_, [1, 2])
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_real_data_set_viz(self):

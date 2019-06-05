@@ -68,7 +68,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
             }
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_multiclass_class_report(self):
         """
@@ -96,7 +96,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
             }}
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_pandas_integration(self):

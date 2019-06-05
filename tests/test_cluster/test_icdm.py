@@ -134,7 +134,7 @@ class TestInterclusterDistance(VisualTestCase):
 
         # Image similarity
         oz.finalize()
-        tol = 4.9 if sys.platform == 'win32' else 1.0 # fails with RMSE 4.740 on AppVeyor
+        tol = 4.9 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 4.740 on AppVeyor
         self.assert_images_similar(oz, tol=tol)
 
     @pytest.mark.filterwarnings("ignore:the matrix subclass is not the recommended way")
@@ -159,7 +159,7 @@ class TestInterclusterDistance(VisualTestCase):
 
         # Image similarity
         oz.finalize()
-        tol = 2.75 if sys.platform == 'win32' else 1.0 # fails with RMSE 2.687 on AppVeyor
+        tol = 2.75 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 2.687 on AppVeyor
         self.assert_images_similar(oz, tol=tol)
 
 
@@ -246,7 +246,7 @@ class TestInterclusterDistance(VisualTestCase):
         oz = intercluster_distance(model, self.blobs4.X, random_state=93, legend=False)
         assert isinstance(oz, InterclusterDistance)
 
-        tol = 2.75 if sys.platform == 'win32' else 1.0 # fails with RMSE 2.631 on AppVeyor
+        tol = 2.75 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 2.631 on AppVeyor
         self.assert_images_similar(oz, tol=tol)
 
     @pytest.mark.skipif(MPL_VERS_MAJ >= 2, reason="test requires mpl earlier than 2.0.2")

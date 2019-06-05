@@ -108,7 +108,7 @@ class TestPrecisionRecallCurve(VisualTestCase):
 
         # Compare the images
         oz.finalize()
-        tol = 1.5 if sys.platform == 'win32' else 1.0 # fails with RMSE 1.409 on AppVeyor
+        tol = 1.5 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 1.409 on AppVeyor
         self.assert_images_similar(oz, tol=tol)
 
     def test_binary_probability_decision(self):
@@ -138,7 +138,7 @@ class TestPrecisionRecallCurve(VisualTestCase):
 
         # Compare the images
         oz.finalize()
-        tol = 4.6 if sys.platform == 'win32' else 1.0 # fails with RMSE 4.522 on AppVeyor
+        tol = 4.6 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 4.522 on AppVeyor
         self.assert_images_similar(oz, tol=tol)
 
     def test_binary_decision(self):
@@ -201,7 +201,7 @@ class TestPrecisionRecallCurve(VisualTestCase):
 
         # Compare the images
         oz.finalize()
-        tol = 1.25 if sys.platform == 'win32' else 1.0 # fails with RMSE 1.118 on AppVeyor
+        tol = 1.25 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 1.118 on AppVeyor
         self.assert_images_similar(oz, tol=tol)
 
     def test_multiclass_probability(self):
@@ -237,7 +237,7 @@ class TestPrecisionRecallCurve(VisualTestCase):
 
         # Compare the images
         oz.finalize()
-        tol = 6.6 if sys.platform == 'win32' else 1.0 # fails with RMSE 6.583 on AppVeyor
+        tol = 6.6 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 6.583 on AppVeyor
         self.assert_images_similar(oz, tol=tol)
 
     def test_multiclass_probability_with_class_labels(self):
@@ -300,7 +300,7 @@ class TestPrecisionRecallCurve(VisualTestCase):
                 oz.ax.texts.remove(child)
 
         # Compare the images
-        tol = 6.6 if sys.platform == 'win32' else 1.0 # fails with RMSE 6.583 on AppVeyor
+        tol = 6.6 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 6.583 on AppVeyor
         self.assert_images_similar(oz, tol=tol)
 
     @pytest.mark.filterwarnings("ignore:From version 0.21")
@@ -317,7 +317,7 @@ class TestPrecisionRecallCurve(VisualTestCase):
             random_state=2)
         assert isinstance(oz, PrecisionRecallCurve)
 
-        tol = 5.8 if sys.platform == 'win32' else 1.0 # fails with RMSE 5.740 on AppVeyor
+        tol = 5.8 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 5.740 on AppVeyor
         self.assert_images_similar(oz, tol=tol)
 
     def test_no_scoring_function(self):
@@ -351,7 +351,7 @@ class TestPrecisionRecallCurve(VisualTestCase):
         viz.score(X_test, y_test)
         viz.finalize()
 
-        tol = 4.5 if sys.platform == 'win32' else 1.0 # fails with RMSE 4.358 on AppVeyor
+        tol = 4.5 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 4.358 on AppVeyor
         self.assert_images_similar(viz,tol=tol)
 
     def test_quick_method_with_test_set(self):
@@ -373,7 +373,7 @@ class TestPrecisionRecallCurve(VisualTestCase):
             random_state=7,
         )
 
-        tol = 1.5 if sys.platform == 'win32' else 1.0 # fails with RMSE 1.231 on AppVeyor
+        tol = 1.5 if sys.platform == 'wwwww' else 1.0 # fails with RMSE 1.231 on AppVeyor
         self.assert_images_similar(viz, tol=tol)
 
     def test_missing_test_data_in_quick_method(self):

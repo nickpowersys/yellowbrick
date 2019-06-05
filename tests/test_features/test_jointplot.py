@@ -46,7 +46,8 @@ try:
 except ImportError:
     pd = None
 
-win_tol = 5.5 if is_winconda_env() else None
+#win_tol = 5.5 if is_winconda_env() else None
+win_tol = None
 
 ##########################################################################
 ## Fixtures

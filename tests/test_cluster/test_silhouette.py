@@ -40,7 +40,7 @@ class SilhouetteVisualizerTests(VisualTestCase):
     """
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_integrated_kmeans_silhouette(self):
         """
@@ -66,7 +66,7 @@ class SilhouetteVisualizerTests(VisualTestCase):
             self.fail("error during silhouette: {}".format(e))
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_integrated_mini_batch_kmeans_silhouette(self):
         """
@@ -101,7 +101,7 @@ class SilhouetteVisualizerTests(VisualTestCase):
         raise NotImplementedError("no negative silhouette example available")
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_colormap_silhouette(self):
         """
@@ -125,7 +125,7 @@ class SilhouetteVisualizerTests(VisualTestCase):
             self.fail("error during silhouette: {}".format(e))
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_colors_silhouette(self):
         """

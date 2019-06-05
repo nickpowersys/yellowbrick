@@ -218,7 +218,7 @@ class TestRank2D(VisualTestCase):
     """
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_rank2d_pearson(self):
         """
@@ -248,7 +248,7 @@ class TestRank2D(VisualTestCase):
         self.assert_images_similar(oz, tol=0.1)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_rank2d_covariance(self):
         """
@@ -278,7 +278,7 @@ class TestRank2D(VisualTestCase):
         self.assert_images_similar(oz, tol=0.1)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_rank2d_spearman(self):
         """
@@ -308,7 +308,7 @@ class TestRank2D(VisualTestCase):
         self.assert_images_similar(oz, tol=0.1)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_rank2d_kendalltau(self):
         """
@@ -338,7 +338,7 @@ class TestRank2D(VisualTestCase):
         self.assert_images_similar(oz, tol=0.1)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_rank2d_integrated_pandas(self):
@@ -362,7 +362,7 @@ class TestRank2D(VisualTestCase):
         self.assert_images_similar(oz, tol=0.1)
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     def test_rank2d_integrated_numpy(self):
         """
