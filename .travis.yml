@@ -1,30 +1,39 @@
+env:
+  global:
+    # include $HOME/.local/bin for `aws`
+    - PATH=$HOME/.local/bin:$PATH
+
 dist: xenial
 language: python
 matrix:
   include:
     - name: "Python 3.6 on Xenial Linux"
       python: '3.6'
+      env: PY_SOURCE="pypi"
 
     - name: "Python 3.7 on Xenial Linux"
       python: '3.7'
+      env: PY_SOURCE="pypi"
 
     - name: "Miniconda 3.6 on Xenial Linux"
-      env: ANACONDA="3.6"
+      env: MINICONDA_PY_VERS="3.6"
+      env: PY_SOURCE="anaconda"
 
     - name: "Miniconda 3.7 on Xenial Linux"
-      env: ANACONDA="3.7"
+      env: MINICONDA_PY_VERS="3.7"
+      env: PY_SOURCE="anaconda"
 
 before_install:
 - sudo apt-get update;
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-    MINICONDA_OS="Linux";  
+    MINICONDA_OS="Linux";
     sudo apt-get build-dep python-scipy;
   else
     MINICONDA_OS="MacOSX";
   fi
 
 install:
-- if [[ -z ${ANACONDA} ]]; then
+- if [[ -z ${MINICONDA_PY_VERS} ]]; then
       pip install -r requirements.txt;
       pip install -r tests/requirements.txt;
       pip install coveralls;
@@ -36,14 +45,36 @@ install:
       conda config --set always_yes yes --set changeps1 no;
       conda update -n base conda --yes;
       conda config --add channels conda-forge;
-      conda env create -f tests/requirements.txt -n yellowbrick python=$ANACONDA;
+      conda env create -f tests/requirements.txt -n yellowbrick python=$MINICONDA_PY_VERS;
       source activate yellowbrick;
       conda install coveralls;
   fi
+- pip install --user awscli
 
 script: 
 - python -m nltk.downloader popular
 - make test
+
+after_failure:
+IMAGE_DIFFS="./tests/actual_images/**failed-diff.png"
+# If there are failed images, tar and sync to S3
+- if [[compgen -G $IMAGE_DIFFS > /dev/null]]; then 
+      makdir -p ~/actual_images;
+      for diff in $IMAGE_DIFFS
+        do
+          actual=diff%"-failed-diff"
+          cp actual ~/actual_images
+      done
+      if [[ -z ${MINICONDA_PY_VERS} ]]; then
+          IMAGES_DIR = $TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$TRAVIS_PYTHON_VERSION;
+        else
+          IMAGES_DIR = $TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$MINICONDA_PY_VERS;
+        fi
+      mkdir -p ~/$IMAGES_DIR;
+      tar -cvfj ~/$IMAGES_DIR/diffs_$TRAVIS_JOB_ID.tar.bz2 $IMAGE_DIFFS;
+      tar -cvfj ~/$IMAGES_DIR/actuals_$TRAVIS_JOB_ID.tar.bz2 ~/actual_images;
+      aws s3 sync $IMAGES_DIR s3://nickpowersys-travisminiconda/$TRAVIS_BUILD_NUMBER
+    fi
 
 after_success: coveralls
 
