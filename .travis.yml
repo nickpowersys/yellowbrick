@@ -31,7 +31,7 @@ before_install:
   fi
 
 install:
-- if [[ $PY_SOURCE == "pypi" ]]; then
+- if [[ "$PY_SOURCE" == "pypi" ]]; then
       pip install -r requirements.txt;
       pip install -r tests/requirements.txt;
       pip install coveralls;
