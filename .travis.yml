@@ -16,12 +16,10 @@ matrix:
       env: PY_SOURCE="pypi"
 
     - name: "Miniconda 3.6 on Xenial Linux"
-      env: ANACONDA="3.6"
-      env: PY_SOURCE="anaconda"
+      env: ANACONDA="3.6" PY_SOURCE="anaconda"
 
     - name: "Miniconda 3.7 on Xenial Linux"
-      env: ANACONDA="3.7"
-      env: PY_SOURCE="anaconda"
+      env: ANACONDA="3.7" PY_SOURCE="anaconda"
 
 before_install:
 - sudo apt-get update;
