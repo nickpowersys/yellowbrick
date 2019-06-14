@@ -16,11 +16,11 @@ matrix:
       env: PY_SOURCE="pypi"
 
     - name: "Miniconda 3.6 on Xenial Linux"
-      env: MINICONDA_PY_VERS="3.6"
+      env: ANACONDA="3.6"
       env: PY_SOURCE="anaconda"
 
     - name: "Miniconda 3.7 on Xenial Linux"
-      env: MINICONDA_PY_VERS="3.7"
+      env: ANACONDA="3.7"
       env: PY_SOURCE="anaconda"
 
 before_install:
@@ -33,7 +33,7 @@ before_install:
   fi
 
 install:
-- if [[ -z ${MINICONDA_PY_VERS} ]]; then
+- if [[ $PY_SOURCE == "pypi" ]]; then
       pip install -r requirements.txt;
       pip install -r tests/requirements.txt;
       pip install coveralls;
@@ -45,7 +45,7 @@ install:
       conda config --set always_yes yes --set changeps1 no;
       conda update -n base conda --yes;
       conda config --add channels conda-forge;
-      conda env create -f tests/requirements.txt -n yellowbrick python=$MINICONDA_PY_VERS;
+      conda env create -f tests/requirements.txt -n yellowbrick python=$ANACONDA;
       source activate yellowbrick;
       conda install coveralls;
   fi
@@ -68,7 +68,7 @@ after_failure:
       if [[ -z ${MINICONDA_PY_VERS} ]]; then
           IMAGES_DIR = $TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$TRAVIS_PYTHON_VERSION;
         else
-          IMAGES_DIR = $TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$MINICONDA_PY_VERS;
+          IMAGES_DIR = $TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$ANACONDA;
         fi
       mkdir -p ~/$IMAGES_DIR;
       tar -cvfj ~/$IMAGES_DIR/diffs_$TRAVIS_JOB_ID.tar.bz2 $IMAGE_DIFFS;
