@@ -56,7 +56,7 @@ script:
 - make test
 
 after_failure:
-IMAGE_DIFFS="./tests/actual_images/**failed-diff.png"
+- IMAGE_DIFFS="./tests/actual_images/**failed-diff.png"
 # If there are failed images, tar and sync to S3
 - if [[compgen -G $IMAGE_DIFFS > /dev/null]]; then 
       makdir -p ~/actual_images;
