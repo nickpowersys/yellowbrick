@@ -49,7 +49,7 @@ install:
       source activate yellowbrick;
       conda install coveralls;
   fi
-- pip install --user awscli
+- pip install awscli
 
 script: 
 - python -m nltk.downloader popular
