@@ -66,7 +66,7 @@ after_failure:
 - if [[ -n "$IMAGE_DIFFS" ]]; then
       echo "There are image diffs";
       mkdir -p ~/actual_images;
-      for diff in $IMAGE_DIFFS
+      for DIFF_FILE_PATH in $IMAGE_DIFFS
         do
           SOURCE_IMAGE_DIR=$(dirname "${DIFF_FILE_PATH}")
           ACTUAL_DESTINATION_DIR=~/actual_images"${SOURCE_IMAGE_DIR:1}"
