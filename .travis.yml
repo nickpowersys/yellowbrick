@@ -76,7 +76,7 @@ IMAGE_DIFFS=$(find . -name "**failed-diff.png");
           # Tar directory
           ACTUAL_DESTINATION_DIR=~/actual_images"${SOURCE_IMAGE_DIR:1}"
           echo "Actual destination dir $ACTUAL_DESTINATION_DIR"
-          if [ ! -d "$ACTUAL_DESTINATION_DIR" ] 
+          if [ ! -d $ACTUAL_DESTINATION_DIR ] 
           then
             # echo "$ACTUAL_DESTINATION_DIR does NOT EXIST"
             mkdir -v -p $ACTUAL_DESTINATION_DIR
