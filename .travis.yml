@@ -79,7 +79,7 @@ IMAGE_DIFFS=$(find . -name "**failed-diff.png");
           if [ ! -d "$ACTUAL_DESTINATION_DIR" ] 
           then
             # echo "$ACTUAL_DESTINATION_DIR does NOT EXIST"
-            mkdir -p "$ACTUAL_DESTINATION_DIR"
+            mkdir -v -p $ACTUAL_DESTINATION_DIR
           fi
           DIFF_PNG=$(basename "${DIFF_FILE_PATH}")
           ACTUAL_PNG=${DIFF_PNG%"-failed-diff.png"}".png"
