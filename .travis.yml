@@ -14,6 +14,7 @@ matrix:
 #    - name: "Python 3.7 on Xenial Linux"
 #      python: '3.7'
 #      env: PY_SOURCE="pypi"
+
     - name: "Miniconda 3.6 on Xenial Linux"
       env: ANACONDA="3.6" PY_SOURCE="anaconda"
 
@@ -59,35 +60,16 @@ script:
 - pytest ./tests/test_features
 
 after_failure:
-- cd ./tests/actual_images
-- IMAGE_DIFFS=$(find . -name "**failed-diff.png");
-#- IMAGE_DIFFS=$(find ./tests/actual_images/test_features -name "**failed-diff.png");
+- IMAGE_DIFFS=$(find ./tests/actual_images/test_features -name "**failed-diff.png");
 # If there are failed images, tar and sync to S3
 - if [[ -n "$IMAGE_DIFFS" ]]; then
       echo "There are image diffs";
-      # mkdir -p ~/actual_images;
-      for DIFF_FILE_PATH in $IMAGE_DIFFS
-        do
-          echo "Diff file path $DIFF_FILE_PATH";
-          # Source directory
-          SOURCE_IMAGE_DIR=$(dirname "${DIFF_FILE_PATH}");
-          #echo "Souce $SOURCE_IMAGE_DIR"
-          # Tar directory
-          ACTUAL_DESTINATION_DIR=~/actual_images"${SOURCE_IMAGE_DIR:1}";
-          #echo "Actual destination dir $ACTUAL_DESTINATION_DIR"
-          if [ ! -d $ACTUAL_DESTINATION_DIR ] 
-          then
-            # echo "$ACTUAL_DESTINATION_DIR does NOT EXIST"
-            mkdir -p $ACTUAL_DESTINATION_DIR
-          fi
-          DIFF_PNG=$(basename "${DIFF_FILE_PATH}")
-          ACTUAL_PNG=${DIFF_PNG%"-failed-diff.png"}".png"
-          # Actual destination path
-          #echo "Destination path $ACTUAL_DESTINATION_DIR/$ACTUAL_PNG"
-          # echo "Source path $SOURCE_IMAGE_DIR/$ACTUAL_PNG"
-          cp $SOURCE_IMAGE_DIR/$ACTUAL_PNG $ACTUAL_DESTINATION_DIR/$ACTUAL_PNG
-          # echo "Copying to $ACTUAL_DESTINATION_DIR/$ACTUAL_PNG"
-          cp $SOURCE_IMAGE_DIR/$DIFF_PNG $ACTUAL_DESTINATION_DIR/$DIFF_PNG
+      mkdir -p ~/actual_images;
+      for diff in $IMAGE_DIFFS
+        do 
+          ACTUAL=${diff%"-failed-diff.png"}".png"
+          cp $ACTUAL ~/actual_images
+          echo "Actual $ACTUAL"
       done
       if [[ -z ${ANACONDA} ]]; then
           echo "Collecting diffs and actuals for PyPI Python $TRAVIS_PYTHON_VERSION";
@@ -96,14 +78,10 @@ after_failure:
           echo "Collecting diffs and actuals for Anaconda Python $ANACONDA";
           IMAGES_DIR="$TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$ANACONDA";
       fi
-      mkdir -p ~/"$IMAGES_DIR";
-      #if [ ! -d "$IMAGES_DIR" ]
-      #then
-      #  echo "Failed to create images_dir!"
-      #fi
-      #tar -cvfj ~/$IMAGES_DIR"/diffs_$TRAVIS_JOB_ID.tar.bz2" "$IMAGE_DIFFS";
-      #tar -cvfj ~/$IMAGES_DIR"/actuals_$TRAVIS_JOB_ID.tar.bz2" ~/actual_images;
-      #aws s3 sync ~/$IMAGES_DIR s3://nickpowersys-travisminiconda/$TRAVIS_BUILD_NUMBER;
+      mkdir -p ~/$IMAGES_DIR;
+      tar -cvfj ~/$IMAGES_DIR/diffs_$TRAVIS_JOB_ID.tar.bz2 $IMAGE_DIFFS;
+      tar -cvfj ~/$IMAGES_DIR/actuals_$TRAVIS_JOB_ID.tar.bz2 ~/actual_images;
+      aws s3 sync $IMAGES_DIR s3://nickpowersys-travisminiconda/$TRAVIS_BUILD_NUMBER;
   fi
 
 after_success: coveralls
