@@ -65,11 +65,10 @@ after_failure:
 # If there are failed images, tar and sync to S3
 - if [[ -n "$IMAGE_DIFFS" ]]; then
       echo "There are image diffs";
-      mkdir -p ~/actual_images;
-      for diff in $IMAGE_DIFFS
+      for DIFF_FILE_PATH in $IMAGE_DIFFS
         do
-          ACTUAL=${diff%"-failed-diff.png"}".png"
-          echo "Actual $ACTUAL"
+          SOURCE_IMAGE_DIR=$(dirname "${DIFF_FILE_PATH}")
+          ACTUAL_DESTINATION_DIR=~/actual_images"${SOURCE_IMAGE_DIR:1}"
       done
   fi
 
