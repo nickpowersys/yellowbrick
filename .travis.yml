@@ -62,7 +62,7 @@ after_failure:
 - IMAGE_DIFFS=$(find . -name "**failed-diff.png")
 # If there are failed images, tar and sync to S3
 - echo "$TRAVIS_BUILD_NUMBER"
-- echo IMAGES_DIR='$TRAVIS_BUILD_NUMBER"/"$TRAVIS_OS_NAME"/"$PY_SOURCE"/"$ANACONDA'
+- IMAGES_DIR='$TRAVIS_BUILD_NUMBER"/"$TRAVIS_OS_NAME"/"$PY_SOURCE"/"$ANACONDA'
 - echo "$IMAGES_DIR"
 - if [ -n "$IMAGE_DIFFS" ]
   then
