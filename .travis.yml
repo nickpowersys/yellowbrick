@@ -68,11 +68,12 @@ after_failure:
       mkdir -p ~/actual_images;
       for diff in $IMAGE_DIFFS
         do
-          SOURCE_IMAGE_DIR=$(dirname "${diff}")
-          ACTUAL_DESTINATION_DIR=~/actual_images"${SOURCE_IMAGE_DIR:1}"
+          ACTUAL=${diff%"-failed-diff.png"}".png"
+          #SOURCE_IMAGE_DIR=$(dirname "${diff}")
+          #ACTUAL_DESTINATION_DIR=~/actual_images"${SOURCE_IMAGE_DIR:1}"
           #ACTUAL=${diff%"-failed-diff.png"}".png"
           #cp $ACTUAL ~/actual_images
-          #echo "Actual $ACTUAL"
+          echo "Actual $ACTUAL"
       done
       #mkdir -p ~/actual_images;
       #for diff in $IMAGE_DIFFS
