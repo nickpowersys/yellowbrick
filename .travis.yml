@@ -44,7 +44,7 @@ install:
       conda config --set always_yes yes --set changeps1 no;
       conda update -n base conda --yes;
       conda config --add channels conda-forge;
-      export BASE_PYTHON=`python -c 'import sys; version=sys.version_info[:3]; print("{0}.{1}.{2}".format(*version))';
+      export BASE_PYTHON=`python -c 'import sys; version=sys.version_info[:3]; print("{0}.{1}.{2}".format(*version))'`;
       echo "Base Anconda Python is $BASE_PYTHON";
       echo "Creating conda environment with Anaconda Python $ANACONDA";
       conda env create -f tests/requirements.txt -n yellowbrick python=$ANACONDA;
