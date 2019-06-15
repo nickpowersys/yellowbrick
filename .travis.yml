@@ -66,7 +66,7 @@ after_failure:
 - echo "$IMAGES_DIR"
 - if [ -n "$IMAGE_DIFFS" ]
   then
-      echo "Image diffs found";
+      echo "Image diffs found"
   fi
 - if [ -n "$IMAGE_DIFFS" ]
   then
@@ -90,7 +90,7 @@ after_failure:
       else
           IMAGES_DIR=$TRAVIS_BUILD_NUMBER"/"$TRAVIS_OS_NAME"/"$PY_SOURCE"/"$ANACONDA
       fi
-      mkdir -p ~/"$IMAGES_DIR";
+      mkdir -p ~/"$IMAGES_DIR"
   fi
 
 after_success: coveralls
