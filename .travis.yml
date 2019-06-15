@@ -97,11 +97,11 @@ IMAGE_DIFFS=$(find . -name "**failed-diff.png");
           echo "Collecting diffs and actuals for Anaconda Python $ANACONDA";
           IMAGES_DIR="$TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$ANACONDA";
       fi
-      mkdir -p ~/$IMAGES_DIR;
-      if [ ! -d "$IMAGES_DIR"]
-      then
-        echo "Failed to create images_dir!"
-      fi
+      mkdir -p ~/"$IMAGES_DIR";
+      #if [ ! -d "$IMAGES_DIR" ]
+      #then
+      #  echo "Failed to create images_dir!"
+      #fi
       tar -cvfj ~/$IMAGES_DIR"/diffs_$TRAVIS_JOB_ID.tar.bz2" "$IMAGE_DIFFS";
       tar -cvfj ~/$IMAGES_DIR"/actuals_$TRAVIS_JOB_ID.tar.bz2" ~/actual_images;
       aws s3 sync ~/$IMAGES_DIR s3://nickpowersys-travisminiconda/$TRAVIS_BUILD_NUMBER;
