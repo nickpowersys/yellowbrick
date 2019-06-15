@@ -36,8 +36,7 @@ install:
 - if [[ "$PY_SOURCE" == "pypi" ]]; then
       pip install -r requirements.txt;
       pip install -r tests/requirements.txt;
-      pip install coveralls;
-      pip install awscli;
+      pip install coveralls awscli;
     else
       wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh;
       bash miniconda.sh -b -p $HOME/miniconda;
@@ -51,8 +50,7 @@ install:
       echo "Creating conda environment with Anaconda Python $ANACONDA";
       conda env create -f tests/requirements.txt -n yellowbrick python=$ANACONDA;
       source activate yellowbrick;
-      conda install coveralls;
-      conda install awscli;
+      conda install coveralls awscli;
   fi
 
 script: 
@@ -65,6 +63,7 @@ after_failure:
 # If there are failed images, tar and sync to S3
 - echo "$TRAVIS_BUILD_NUMBER"
 - echo IMAGES_DIR='$TRAVIS_BUILD_NUMBER"/"$TRAVIS_OS_NAME"/"$PY_SOURCE"/"$ANACONDA'
+- echo "$IMAGES_DIR"
 - if [ -n "$IMAGE_DIFFS" ]
   then
       echo "There are image diffs";
@@ -87,7 +86,7 @@ after_failure:
       else
           IMAGES_DIR='$TRAVIS_BUILD_NUMBER"/"$TRAVIS_OS_NAME"/"$PY_SOURCE"/"$ANACONDA'
       fi
-      mkdir -p ~/"$IMAGES_DIR"
+      mkdir -p ~/"$IMAGES_DIR";
       tar -cvfj ~/$IMAGES_DIR"/diffs_$TRAVIS_JOB_ID.tar.bz2" "$IMAGE_DIFFS";
       tar -cvfj ~/$IMAGES_DIR"/actuals_$TRAVIS_JOB_ID.tar.bz2" ~/actual_images;
       aws s3 sync ~/$IMAGES_DIR s3://nickpowersys-travisminiconda/$TRAVIS_BUILD_NUMBER;
