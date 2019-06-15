@@ -1,7 +1,7 @@
-#env:
-#  global:
-#    # include $HOME/.local/bin for `aws`
-#    - PATH=$HOME/.local/bin:$PATH
+env:
+  global:
+    # include $HOME/.local/bin for `aws`
+    - PATH=$HOME/.local/bin:$PATH
 
 dist: xenial
 language: python
