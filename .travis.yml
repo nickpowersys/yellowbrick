@@ -62,6 +62,7 @@ script:
 after_failure:
 - cd ./tests/actual_images
 - IMAGE_DIFFS=$(find . -name "**failed-diff.png");
+- echo "im diffs $IMAGE_DIFFS"
 # If there are failed images, tar and sync to S3
 - if [ -n "$IMAGE_DIFFS" ]
   then
@@ -82,10 +83,10 @@ after_failure:
       if [ -z ${ANACONDA} ]
       then
           echo "Collecting diffs and actuals for PyPI Python $TRAVIS_PYTHON_VERSION";
-          IMAGES_DIR="$TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$TRAVIS_PYTHON_VERSION";
+          IMAGES_DIR=$TRAVIS_BUILD_NUMBER"/"$TRAVIS_OS_NAME"/"$PY_SOURCE"/"$TRAVIS_PYTHON_VERSION;
       else
           echo "Collecting diffs and actuals for Anaconda Python $ANACONDA";
-          IMAGES_DIR="$TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$ANACONDA";
+          IMAGES_DIR=$TRAVIS_BUILD_NUMBER"/"$TRAVIS_OS_NAME"/"$PY_SOURCE"/"$ANACONDA;
       fi
       mkdir -p ~/"$IMAGES_DIR"
       tar -cvfj ~/$IMAGES_DIR"/diffs_$TRAVIS_JOB_ID.tar.bz2" "$IMAGE_DIFFS";
