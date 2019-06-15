@@ -60,7 +60,8 @@ script:
 - pytest ./tests/test_features
 
 after_failure:
-- IMAGE_DIFFS=$(find ./tests/actual_images/test_features -name "**failed-diff.png");
+- cd ./tests/actual_images
+- IMAGE_DIFFS=$(find . -name "**failed-diff.png");
 # If there are failed images, tar and sync to S3
 - if [[ -n "$IMAGE_DIFFS" ]]; then
       echo "There are image diffs";
