@@ -22,10 +22,11 @@ matrix:
 #      env: ANACONDA="3.7" PY_SOURCE="anaconda"
 
 before_install:
-#- sudo apt-get update
+- sudo apt-get update
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
     MINICONDA_OS="Linux";
-    sudo apt-get build-dep python-scipy;
+    if [[ "$PY_SOURCE" == "pypi" ]]; then
+      sudo apt-get build-dep python-scipy;
   else
     MINICONDA_OS="MacOSX";
   fi
