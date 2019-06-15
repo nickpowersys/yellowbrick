@@ -66,9 +66,10 @@ after_failure:
       echo "There are image diffs";
       mkdir -p ~/actual_images;
       for diff in $IMAGE_DIFFS
-        do ACTUAL=${diff%"-failed-diff.png"}".png"
-        cp $ACTUAL ~/actual_images
-        echo "Actual $ACTUAL"
+        do 
+          ACTUAL=${diff%"-failed-diff.png"}".png"
+          cp $ACTUAL ~/actual_images
+          echo "Actual $ACTUAL"
       done
       if [[ -z ${ANACONDA} ]]; then
           echo "Collecting diffs and actuals for PyPI Python $TRAVIS_PYTHON_VERSION";
