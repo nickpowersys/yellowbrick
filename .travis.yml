@@ -67,16 +67,16 @@ after_failure:
       echo "There are image diffs";
       for DIFF_FILE_PATH in $IMAGE_DIFFS
         do
-          SOURCE_IMAGE_DIR=$(dirname "${DIFF_FILE_PATH}")
-          ACTUAL_DESTINATION_DIR=~/actual_images"${SOURCE_IMAGE_DIR:1}"
-          if [ ! -d $ACTUAL_DESTINATION_DIR ] 
+          SOURCE_DIR=$(dirname "${DIFF_FILE_PATH}")
+          DEST_DIR=~/actual_images"${SOURCE_DIR:1}"
+          if [ ! -d $DEST_DIR ] 
           then
-            mkdir -p $ACTUAL_DESTINATION_DIR
+            mkdir -p $DEST_DIR
           fi
           DIFF_PNG=$(basename "${DIFF_FILE_PATH}")
           ACTUAL_PNG=${DIFF_PNG%"-failed-diff.png"}".png"
-          cp $SOURCE_IMAGE_DIR/$ACTUAL_PNG $ACTUAL_DESTINATION_DIR/$ACTUAL_PNG
-          cp $SOURCE_IMAGE_DIR/$DIFF_PNG $ACTUAL_DESTINATION_DIR/$DIFF_PNG
+          cp $SOURCE_DIR/$ACTUAL_PNG $DEST_DIR/$ACTUAL_PNG
+          cp $SOURCE_DIR/$DIFF_PNG $DEST_DIR/$DIFF_PNG
       done
       if [[ -z ${ANACONDA} ]]; then
           echo "Collecting diffs and actuals for PyPI Python $TRAVIS_PYTHON_VERSION";
