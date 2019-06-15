@@ -55,10 +55,10 @@ install:
 
 script: 
 - python -m nltk.downloader popular
-- make test
+- pytest ./tests/test_features
 
 after_failure:
-- IMAGE_DIFFS="./tests/actual_images/**failed-diff.png"
+- IMAGE_DIFFS=$(find ./tests/actual_images/test_features -name "**failed-diff.png")
 # If there are failed images, tar and sync to S3
 - if [[compgen -G $IMAGE_DIFFS > /dev/null]]; then
       echo "There are image diffs";
