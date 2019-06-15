@@ -22,7 +22,7 @@ matrix:
 #      env: ANACONDA="3.7" PY_SOURCE="anaconda"
 
 before_install:
-- sudo apt-get update
+#- sudo apt-get update
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
     MINICONDA_OS="Linux";
     sudo apt-get build-dep python-scipy;
@@ -54,21 +54,20 @@ install:
   fi
 
 script: 
-- python -m nltk.downloader popular
+#- python -m nltk.downloader popular
 - pytest ./tests/test_features
 
 after_failure:
-- IMAGE_DIFFS=$(find ./tests/actual_images/test_features -name "**failed-diff.png")
+- IMAGE_DIFFS=$(find ./tests/actual_images/test_features -name "**failed-diff.png");
 # If there are failed images, tar and sync to S3
 - if [[compgen -G $IMAGE_DIFFS > /dev/null]]; then
       echo "There are image diffs";
       mkdir -p ~/actual_images;
       for diff in $IMAGE_DIFFS
-        do
-          actual=diff%"-failed-diff"
-          cp actual ~/actual_images
+        do ACTUAL=${diff%"-failed-diff.png"}".png"
+        cp $ACTUAL ~/actual_images
+        echo "Actual $ACTUAL"
       done
-      IMAGES_DIR="$TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$ANACONDA";
       if [[ -z ${ANACONDA} ]]; then
           echo "Collecting diffs and actuals for PyPI Python $TRAVIS_PYTHON_VERSION";
           IMAGES_DIR="$TRAVIS_BUILD_NUMBER/$TRAVIS_OS_NAME/$PY_SOURCE/$TRAVIS_PYTHON_VERSION";
