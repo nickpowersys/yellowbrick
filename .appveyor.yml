@@ -61,10 +61,10 @@ install:
             python -m nltk.downloader popular
           ) ELSE (
             activate &&
-            conda update -n base conda &&
+            conda update -n base conda --yes &&
             conda config --add channels conda-forge &&
             conda create -n yellowbrick -f tests/requirements.txt &&
-            CALL conda.bat activate yellowbrick
+            CALL conda.bat activate yellowbrick &&
             python -m nltk.downloader popular
           )"
 
