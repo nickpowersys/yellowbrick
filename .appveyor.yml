@@ -58,12 +58,15 @@ install:
             python -m pip install -U wheel &&
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
+            python -m nltk.downloader popular
           ) ELSE (
             activate &&
+            conda update -n base conda &&
             conda config --add channels conda-forge &&
-            conda install --file tests/requirements.txt
+            conda create -n yellowbrick -f tests/requirements.txt &&
+            CALL conda.bat activate yellowbrick
+            python -m nltk.downloader popular
           )"
-  - "python -m nltk.downloader popular"
 
 # No requirement to build any C libraries
 build: off
