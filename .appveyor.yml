@@ -60,7 +60,6 @@ install:
             python -m pip install -U -r tests/requirements.txt
           ) ELSE (
             activate &&
-            conda update -n base conda --yes &&
             conda config --add channels conda-forge &&
             conda install --file tests/requirements.txt
           )"
