@@ -59,7 +59,7 @@ install:
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
           ) ELSE (
-            call activate
+            call activate &&
             conda config --add channels conda-forge &&
             conda env create -f tests/requirements.txt -n yellowbrick &&
             call activate yellowbrick
