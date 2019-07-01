@@ -62,8 +62,7 @@ install:
             activate &&
             conda update -n base conda --yes &&
             conda config --add channels conda-forge &&
-            conda env create -f tests/requirements.txt -n yellowbrick &&
-            CALL conda.bat activate yellowbrick
+            conda install -f tests/requirements.txt
           )"
   - "python -m nltk.downloader popular"
 
