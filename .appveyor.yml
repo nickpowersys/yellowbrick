@@ -62,7 +62,7 @@ install:
             activate &&
             conda update -n base conda --yes &&
             conda config --add channels conda-forge &&
-            conda install -f tests/requirements.txt
+            conda install --file tests/requirements.txt
           )"
   - "python -m nltk.downloader popular"
 
