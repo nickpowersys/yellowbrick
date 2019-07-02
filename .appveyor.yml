@@ -60,9 +60,13 @@ install:
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
           ) ELSE (
-            conda update -n base conda --yes &&
+            conda config --set always_yes yes &&
+            conda update -n base conda &&
             conda config --add channels conda-forge &&
-            conda env create -f tests/requirements.txt -n yellowbrick &&
+            conda create -n yellowbrick &&
+            conda install --file tests/requirements.txt &&
+            conda uninstall matplotlib &&
+            conda install -c conda-forge/label/testing matplotlib &&
             call activate yellowbrick
           )"
   - "python -m nltk.downloader popular"

@@ -6,6 +6,7 @@ numpy>=1.13.0
 cycler>=0.10.0
 
 # Testing Requirements
+pip
 pytest>=4.2.0, !=4.6.0
 pytest-cov>=2.6.1
 pytest-flakes>=4.0.0
@@ -17,5 +18,5 @@ requests>=2.18.3
 nltk>=3.2
 # spacy>=2.0.18 
 pandas>=0.20
-umap-learn==0.3
-numba==0.42
+umap-learn
+numba

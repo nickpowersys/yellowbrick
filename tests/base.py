@@ -14,9 +14,7 @@ Helper functions and cases for making assertions on visualizations.
 ## Imports
 ##########################################################################
 
-import os
 import inspect
-import sys
 
 import unittest
 import matplotlib as mpl
@@ -29,9 +27,10 @@ from matplotlib.testing.compare import compare_images
 from yellowbrick.exceptions import ImageComparisonFailure
 
 def is_windows_or_conda():
-    is_windows = sys.platform == 'win32'
-    is_conda = os.path.exists(os.path.join(sys.prefix, 'conda-meta'))
-    return is_windows or is_conda
+    #is_windows = sys.platform == 'win32'
+    #is_conda = os.path.exists(os.path.join(sys.prefix, 'conda-meta'))
+    #return is_windows or is_conda
+    return False
 
 ##########################################################################
 ## Module Constants
