@@ -38,7 +38,7 @@ install:
       conda update -n base conda;
       conda config --add channels conda-forge;
       conda env create -f tests/requirements.txt -n yellowbrick python=$ANACONDA;
-      conda uninstall matplotlib;
+      conda uninstall matplotlib matplotlib-base;
       conda install -c conda-forge/label/testing matplotlib;
       source activate yellowbrick;
       conda install coveralls;
