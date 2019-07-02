@@ -15,6 +15,7 @@ Helper functions and cases for making assertions on visualizations.
 ##########################################################################
 
 import inspect
+import os
 
 import unittest
 import matplotlib as mpl
