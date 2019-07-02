@@ -67,6 +67,7 @@ install:
             conda install --file tests/requirements.txt &&
             conda uninstall matplotlib &&
             conda install -c conda-forge/label/testing matplotlib &&
+            conda install nltk &&
             call activate yellowbrick
           )"
   - "python -m nltk.downloader popular"
