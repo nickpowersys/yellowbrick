@@ -7,6 +7,16 @@ cycler>=0.10.0
 
 # Testing Requirements
 pip
+
+#
+#freetype>=2.3
+#python-dateutil>=2.1
+#kiwisolver>=1.0.0
+#pyparsing
+tornado # For WebAgg backend
+#libpng>=1.2
+#
+
 pytest>=4.2.0, !=4.6.0
 pytest-cov>=2.6.1
 pytest-flakes>=4.0.0
