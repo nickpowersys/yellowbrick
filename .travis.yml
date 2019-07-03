@@ -40,7 +40,7 @@ install:
       conda config --add conda-forge/label/testing;
       conda create -n yellowbrick python=$ANACONDA;
       conda install -f tests/requirements.txt;
-      source activate yellowbrick;
+      conda activate yellowbrick;
       conda install coveralls;
   fi
 
