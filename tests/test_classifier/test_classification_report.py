@@ -59,7 +59,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
         viz.fit(self.binary.X.train, self.binary.y.train)
         viz.score(self.binary.X.test, self.binary.y.test)
 
-        self.assert_images_similar(viz, tol=40)
+        self.assert_images_similar(viz)
 
         assert viz.scores_ == {
             'precision': {0: approx(0.7446808), 1: approx(0.8490566)},
@@ -68,7 +68,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
             }
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwwww', reason="images not close on windows"
     )
     def test_multiclass_class_report(self):
         """
@@ -80,7 +80,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
         viz.fit(self.multiclass.X.train, self.multiclass.y.train)
         viz.score(self.multiclass.X.test, self.multiclass.y.test)
 
-        self.assert_images_similar(viz, tol=11.0)
+        self.assert_images_similar(viz)
 
         assert viz.scores_ == {
             'precision': {
@@ -96,7 +96,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
             }}
 
     @pytest.mark.xfail(
-        sys.platform == 'win32', reason="images not close on windows"
+        sys.platform == 'wwwww', reason="images not close on windows"
     )
     @pytest.mark.skipif(pd is None, reason="test requires pandas")
     def test_pandas_integration(self):
@@ -128,7 +128,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
         viz.fit(X_train, y_train)
         viz.score(X_test, y_test)
 
-        self.assert_images_similar(viz, tol=43.0)
+        self.assert_images_similar(viz)
 
         # Ensure correct classification scores under the hood!
         assert viz.scores_ == {
@@ -156,7 +156,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
         model = DecisionTreeClassifier(random_state=19)
         classification_report(model, X, y, ax=ax, random_state=42)
 
-        self.assert_images_similar(ax=ax, tol=25.0)
+        self.assert_images_similar(ax=ax)
 
     def test_isclassifier(self):
         """
@@ -182,7 +182,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
         viz.fit(self.binary.X.train, self.binary.y.train)
         viz.score(self.binary.X.test, self.binary.y.test)
 
-        self.assert_images_similar(viz, tol=40)
+        self.assert_images_similar(viz)
 
         assert viz.scores_ == {
             'precision': {0: approx(0.7446808), 1: approx(0.8490566)},
@@ -203,7 +203,7 @@ class ClassificationReportTests(VisualTestCase, DatasetMixin):
         viz.fit(self.binary.X.train, self.binary.y.train)
         viz.score(self.binary.X.test, self.binary.y.test)
 
-        self.assert_images_similar(viz, tol=40)
+        self.assert_images_similar(viz)
 
         assert viz.scores_ == {
             'precision': {0: approx(0.7446808), 1: approx(0.8490566)},
