@@ -53,21 +53,20 @@ matrix:
     fast_finish: true
 
 install:
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - cmd: "IF '%MINICONDA_VERSION%'=='' (
+            SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH% &&
             python -m pip install -U pip &&
             python -m pip install -U wheel &&
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
           ) ELSE (
+            CALL "%PYTHON%\\Scripts\\activate.bat" &&
             conda config --set always_yes yes &&
             conda update -n base conda &&
             conda config --add channels conda-forge &&
+            conda config --add channels conda-forge/label/testing &&
             conda create -n yellowbrick &&
             conda install --file tests/requirements.txt &&
-            conda uninstall matplotlib &&
-            conda install -c conda-forge/label/testing matplotlib &&
-            conda install nltk &&
             call activate yellowbrick
           )"
   - "python -m nltk.downloader popular"
