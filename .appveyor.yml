@@ -67,14 +67,18 @@ install:
   - ECHO %PATH%
   - cmd /E:on /c  IF defined MINICONDA_VERSION CALL "%PYTHON%\\Scripts\\activate.bat"
   - ECHO %PATH%
-  - cmd /E:on /c  IF defined MINICONDA_VERSION (
-            conda config --set always_yes yes &&
-            conda update -n base conda &&
-            conda config --add channels conda-forge &&
-            conda config --add channels conda-forge/label/testing &&
-            conda create -n yellowbrick &&
-            conda install --file tests/requirements.txt
-    )
+  - cmd /E:on /c  IF defined MINICONDA_VERSION conda config --set always_yes yes
+  - ECHO Syntax okay to here
+  - cmd /E:on /c  IF defined MINICONDA_VERSION conda update -n base conda
+  - ECHO Syntax okay to here
+  - cmd /E:on /c  IF defined MINICONDA_VERSION conda config --add channels conda-forge
+  - ECHO Syntax okay to here
+  - cmd /E:on /c  IF defined MINICONDA_VERSION conda config --add channels conda-forge/label/testing
+  - ECHO Syntax okay to here
+  - cmd /E:on /c  IF defined MINICONDA_VERSION conda create -n yellowbrick
+  - ECHO Syntax okay to here
+  - cmd /E:on /c  IF defined MINICONDA_VERSION conda install --file tests/requirements.txt
+  - ECHO Syntax okay to here
   - cmd /E:on /c  IF defined MINICONDA_VERSION call activate yellowbrick
   - "python -m nltk.downloader popular"
 
