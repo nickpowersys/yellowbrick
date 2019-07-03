@@ -35,12 +35,12 @@ environment:
         #  PYTHON_VERSION: "3.7"
         #  PYTHON_ARCH: "64"
 
-        - PYTHON: "C:\\Miniconda36-x64"
+        - PYTHON: "C:\Miniconda36-x64"
           PYTHON_VERSION: "3.6"
           MINICONDA_VERSION: "4.5.4"
           PYTHON_ARCH: "64"
 
-        - PYTHON: "C:\\Miniconda37-x64"
+        - PYTHON: "C:\Miniconda37-x64"
           PYTHON_VERSION: "3.7"
           MINICONDA_VERSION: "4.5.12"
           PYTHON_ARCH: "64"
@@ -53,19 +53,17 @@ matrix:
 install:
 # Some conditional statements are splited to avoid "\Microsoft was unexpected at this time.” error.
 # https://support.microsoft.com/ja-jp/help/2524009/error-running-command-shell-scripts-that-include-parentheses
-  - SET PATH="%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - IF '%MINICONDA_VERSION%'=='' (
             python -m pip install -U pip &&
             python -m pip install -U wheel &&
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
     )
-  - set PATH=%PYTHON%;%PYTHON%\\scripts;%PATH%;
+  - CALL "%PYTHON%\\Scripts\\activate.bat"
   - conda config --set always_yes yes
   - conda update -n base conda
   - conda config --add channels conda-forge
   - conda config --add channels conda-forge/label/testing
-  - activate
   - conda create -n yellowbrick
   - call activate yellowbrick
   - conda install --file tests/requirements.txt
