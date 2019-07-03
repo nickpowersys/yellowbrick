@@ -66,9 +66,6 @@ install:
   - cmd /E:on /c  IF defined MINICONDA_VERSION ECHO MINICONDA_DEFINED
   - ECHO %PATH%
   - cmd /E:on /c  IF defined MINICONDA_VERSION CALL "%PYTHON%\\Scripts\\activate.bat"
-  - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION python -m conda init
-  - ECHO Syntax okay to here
   - cmd /E:on /c  IF defined MINICONDA_VERSION conda config --set always_yes yes
   - ECHO Syntax okay to here
   - cmd /E:on /c  IF defined MINICONDA_VERSION conda update -n base conda
