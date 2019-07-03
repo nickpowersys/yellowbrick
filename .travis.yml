@@ -36,7 +36,6 @@ install:
       echo "Base Anaconda Python is $BASE_PYTHON";
       echo "Creating Anaconda Python $ANACONDA conda environment";
       conda update -n base conda;
-      conda init;
       conda config --add channels conda-forge;
       conda config --add channels conda-forge/label/testing;
       conda create -n yellowbrick python=$ANACONDA;
