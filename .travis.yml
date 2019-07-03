@@ -41,7 +41,7 @@ install:
       conda info -a;
       conda create -n yellowbrick python=$ANACONDA;
       conda install --file tests/requirements.txt;
-      source activate yellowbrick;
+      activate yellowbrick;
       conda install coveralls;
   fi
 
