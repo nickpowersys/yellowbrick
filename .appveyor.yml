@@ -62,25 +62,23 @@ install:
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
     )
+  - set PATH=%PYTHON%;%PYTHON%\\scripts;%PATH%;
   - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION ECHO MINICONDA_DEFINED
-  - ECHO %PATH%
-  - cmd /E:on /c  IF defined MINICONDA_VERSION set PATH=%PYTHON%;%PYTHON%\\scripts;%PATH%;
+  - conda config --set always_yes yes
   - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION call conda config --set always_yes yes
+  - conda update -n base conda
   - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION conda update -n base conda
+  - conda config --add channels conda-forge
   - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION conda config --add channels conda-forge
+  - conda config --add channels conda-forge/label/testing
   - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION conda config --add channels conda-forge/label/testing
+  - activate
   - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION activate
-  - cmd /E:on /c  IF defined MINICONDA_VERSION conda create -n yellowbrick
+  - conda create -n yellowbrick
   - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION conda install --file tests/requirements.txt
+  - conda install --file tests/requirements.txt
   - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION call activate yellowbrick
+  - activate yellowbrick
   - "python -m nltk.downloader popular"
 
 # No requirement to build any C libraries
