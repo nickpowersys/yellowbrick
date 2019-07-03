@@ -54,7 +54,7 @@ install:
 # Some conditional statements are splited to avoid "\Microsoft was unexpected at this time.” error.
 # https://support.microsoft.com/ja-jp/help/2524009/error-running-command-shell-scripts-that-include-parentheses
   - ECHO %PYTHON%
-  - %PATH%
+  - ECHO %PATH%
   - IF '%MINICONDA_VERSION%'=='' (
             SET PATH="%PYTHON%;%PYTHON%\\Scripts;%PATH%" &&
             python -m pip install -U pip &&
