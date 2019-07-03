@@ -63,7 +63,7 @@ install:
             python -m pip install -U -r tests/requirements.txt
     )
   - ECHO Syntax okay to here
-  - cmd /E:on /c  'IF defined MINICONDA_VERSION (
+  - cmd /E:on /c  IF defined MINICONDA_VERSION (
             CALL "%PYTHON%\\Scripts\\activate.bat" &&
             conda config --set always_yes yes &&
             conda update -n base conda &&
@@ -72,7 +72,7 @@ install:
             conda create -n yellowbrick &&
             conda install --file tests/requirements.txt &&
             call activate yellowbrick
-    )'
+    )
   - "python -m nltk.downloader popular"
 
 # No requirement to build any C libraries
