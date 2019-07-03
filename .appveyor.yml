@@ -53,14 +53,14 @@ matrix:
 install:
 # Some conditional statements are splited to avoid "\Microsoft was unexpected at this time.” error.
 # https://support.microsoft.com/ja-jp/help/2524009/error-running-command-shell-scripts-that-include-parentheses
-  - cmd: "IF '%MINICONDA_VERSION%'=='' (
+  - IF '%MINICONDA_VERSION%'=='' (
             SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH% &&
             python -m pip install -U pip &&
             python -m pip install -U wheel &&
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
-          )"
-  - cmd: "IF '%MINICONDA_VERSION%'!='' (
+    )
+  - IF '%MINICONDA_VERSION%'!='' (
             CALL '%PYTHON%\\Scripts\\activate.bat' &&
             conda config --set always_yes yes &&
             conda update -n base conda &&
@@ -69,7 +69,7 @@ install:
             conda create -n yellowbrick &&
             conda install --file tests/requirements.txt &&
             call activate yellowbrick
-          )"
+    )
   - "python -m nltk.downloader popular"
 
 # No requirement to build any C libraries
