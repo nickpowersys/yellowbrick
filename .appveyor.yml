@@ -65,9 +65,9 @@ install:
   - ECHO Syntax okay to here
   - cmd /E:on /c  IF defined MINICONDA_VERSION ECHO MINICONDA_DEFINED
   - ECHO %PATH%
-  - cmd /E:on /c  IF defined MINICONDA_VERSION set PATH=%PYTHON%;%PYTHON%\scripts;%PATH%;
+  - cmd /E:on /c  IF defined MINICONDA_VERSION set PATH=%PYTHON%;%PYTHON%\\scripts;%PATH%;
   - ECHO Syntax okay to here
-  - cmd /E:on /c  IF defined MINICONDA_VERSION call conda config --set always_yes yes
+  - cmd /E:on /c  IF defined MINICONDA_VERSION conda config --set always_yes yes
   - ECHO Syntax okay to here
   - cmd /E:on /c  IF defined MINICONDA_VERSION conda update -n base conda
   - ECHO Syntax okay to here
