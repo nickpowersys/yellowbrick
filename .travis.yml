@@ -38,10 +38,10 @@ install:
       conda update -n base conda;
       conda init;
       conda config --add channels conda-forge;
-      conda config --add conda-forge/label/testing;
+      conda config --add channels conda-forge/label/testing;
       conda create -n yellowbrick python=$ANACONDA;
-      conda install -f tests/requirements.txt;
-      conda activate yellowbrick;
+      conda install --file tests/requirements.txt;
+      source activate yellowbrick;
       conda install coveralls;
   fi
 
