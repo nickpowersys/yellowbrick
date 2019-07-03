@@ -54,12 +54,12 @@ install:
 # Some conditional statements are splited to avoid "\Microsoft was unexpected at this time.” error.
 # https://support.microsoft.com/ja-jp/help/2524009/error-running-command-shell-scripts-that-include-parentheses
   - SET PATH="%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-  - IF '%MINICONDA_VERSION%'=='' (
+  - cmd: "IF '%MINICONDA_VERSION%'=='' (
             python -m pip install -U pip &&
             python -m pip install -U wheel &&
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
-    )
+          )"
   - set PATH=%PYTHON%;%PYTHON%\\scripts;%PATH%;
   - conda config --set always_yes yes
   - conda update -n base conda
