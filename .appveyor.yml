@@ -73,9 +73,9 @@ install:
             conda config --add channels conda-forge &&
             conda config --add channels conda-forge/label/testing &&
             conda create -n yellowbrick &&
-            conda install --file tests/requirements.txt &&
-            call activate yellowbrick
+            conda install --file tests/requirements.txt
     )
+  - cmd /E:on /c  IF defined MINICONDA_VERSION call activate yellowbrick
   - "python -m nltk.downloader popular"
 
 # No requirement to build any C libraries
