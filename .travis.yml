@@ -40,8 +40,8 @@ install:
       conda config --add channels conda-forge/label/testing;
       activate;
       conda create -n yellowbrick python=$ANACONDA;
-      conda install --file tests/requirements.txt;
       activate yellowbrick;
+      conda install --file tests/requirements.txt;
       conda install coveralls;
   fi
 
