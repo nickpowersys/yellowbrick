@@ -66,8 +66,8 @@ install:
             conda config --add channels conda-forge/label/testing &&
             conda create -n yellowbrick &&
             conda init &&
-            echo ($0) &&
-            conda activate yellowbrick &&
+            bash &&
+            activate yellowbrick &&
             conda install --file tests/requirements.txt
           )"
   - python -m nltk.downloader popular
