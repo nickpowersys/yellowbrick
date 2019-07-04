@@ -59,7 +59,7 @@ install:
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
           ) ELSE (
-            CALL '%PYTHON%\\Scripts\\activate.bat' &&
+            CALL %PYTHON%\\Scripts\\activate.bat &&
             conda config --set always_yes yes &&
             conda update -n base conda &&
             conda config --add channels conda-forge &&
