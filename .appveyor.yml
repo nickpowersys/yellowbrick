@@ -75,6 +75,9 @@ install:
 build: off
 
 test_script:
+    - cmd: "IF '%MINICONDA_VERSION%'=='' (
+              activate yellowbrick
+            )"
     - "python setup.py test"
 
 after_test:
