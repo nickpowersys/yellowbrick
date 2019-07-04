@@ -52,7 +52,7 @@ matrix:
 install:
 # Some conditional statements are splited to avoid "\Microsoft was unexpected at this time.” error.
 # https://support.microsoft.com/ja-jp/help/2524009/error-running-command-shell-scripts-that-include-parentheses
-#  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - cmd: "IF '%MINICONDA_VERSION%'=='' (
             python -m pip install -U pip &&
             python -m pip install -U wheel &&
@@ -64,6 +64,7 @@ install:
             conda update -n base conda &&
             conda config --add channels conda-forge &&
             conda config --add channels conda-forge/label/testing &&
+            activate &&
             conda create -n yellowbrick &&
             call activate yellowbrick &&
             conda install --file tests/requirements.txt
