@@ -52,7 +52,7 @@ matrix:
 install:
 # Some conditional statements are splited to avoid "\Microsoft was unexpected at this time.” error.
 # https://support.microsoft.com/ja-jp/help/2524009/error-running-command-shell-scripts-that-include-parentheses
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+#  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - cmd: "IF '%MINICONDA_VERSION%'=='' (
             python -m pip install -U pip &&
             python -m pip install -U wheel &&
@@ -60,14 +60,14 @@ install:
             python -m pip install -U -r tests/requirements.txt
           ) ELSE (
             CALL %PYTHON%\\Scripts\\activate.bat &&
+            conda install -y -c conda-canary -c defaults -c conda-forge python=%PYTHON_VERSION% pycosat conda requests ruamel_yaml pytest pytest-cov pytest-timeout mock responses pexpect pywin32 anaconda-client conda-package-handling &&
+            conda install -yq conda-build=3.13 &&
             conda config --set always_yes yes &&
             conda update -n base conda &&
             conda config --add channels conda-forge &&
             conda config --add channels conda-forge/label/testing &&
-            activate &&
-            conda create -n yellowbrick &&
-            call activate yellowbrick &&
-            conda install --file tests/requirements.txt
+            conda install --file tests/requirements.txt &&
+            conda info -a
           )"
   - python -m nltk.downloader popular
 
