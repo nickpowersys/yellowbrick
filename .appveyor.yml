@@ -59,13 +59,14 @@ install:
             python -m pip install -U -r requirements.txt &&
             python -m pip install -U -r tests/requirements.txt
           ) ELSE (
-            CALL %PYTHON%\\Scripts\\activate.bat &&
-            conda install -y -c defaults -c conda-forge python=%PYTHON_VERSION% pycosat conda requests ruamel_yaml responses pexpect anaconda-client conda-package-handling &&
-            conda config --set always_yes yes &&
-            conda update -n base conda &&
+            conda config --set always_yes true &&
             conda config --add channels conda-forge &&
             conda config --add channels conda-forge/label/testing &&
-            python -m conda init cmd.exe &&
+            conda update --quiet conda &&
+            activate &&
+            conda info --all &&
+            conda create --quiet --name yellowbrick &&
+            activate yellowbrick &&
             conda install --file tests/requirements.txt
           )"
   - python -m nltk.downloader popular
