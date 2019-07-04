@@ -66,7 +66,7 @@ install:
             conda config --add channels conda-forge &&
             conda config --add channels conda-forge/label/testing &&
             python -m conda init cmd.exe &&
-            conda create -n yellowbrick
+            conda create -n yellowbrick &&
             call activate yellowbrick &&
             conda install --file tests/requirements.txt
           )"
