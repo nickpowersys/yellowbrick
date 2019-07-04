@@ -64,7 +64,7 @@ install:
             conda update --quiet conda &&
             activate &&
             conda info --all &&
-            conda create --quiet --name yellowbrick python='%PYTHON_VERSION%' &&
+            conda create --quiet --name yellowbrick python=%PYTHON_VERSION% &&
             activate yellowbrick &&
             conda install --file tests/requirements.txt &&
             python -m nltk.downloader popular
