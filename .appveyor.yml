@@ -27,10 +27,10 @@ environment:
         #   MINICONDA_VERSION: "4.4.10"
         #   PYTHON_ARCH: "32"
 
-        #- PYTHON: "C:\\Miniconda36-x64"
-        #  PYTHON_VERSION: "3.6"
-        #  MINICONDA_VERSION: "4.5.4"
-        #  PYTHON_ARCH: "64"
+        - PYTHON: "C:\\Miniconda36-x64"
+          PYTHON_VERSION: "3.6"
+          MINICONDA_VERSION: "4.5.4"
+          PYTHON_ARCH: "64"
 
         - PYTHON: "C:\\Miniconda37-x64"
           PYTHON_VERSION: "3.7"
@@ -50,8 +50,7 @@ matrix:
     fast_finish: true
 
 install:
-# Some conditional statements are splited to avoid "\Microsoft was unexpected at this time.” error.
-# https://support.microsoft.com/ja-jp/help/2524009/error-running-command-shell-scripts-that-include-parentheses
+# For Miniconda37, see https://github.com/conda/conda/issues/8836#issuecomment-508358830
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - cmd: "IF '%MINICONDA_VERSION%'=='' (
             python -m pip install -U pip &&
@@ -65,7 +64,7 @@ install:
             conda update --quiet conda &&
             activate &&
             conda info --all &&
-            conda create --quiet --name yellowbrick &&
+            conda create --quiet --name yellowbrick python='%PYTHON_VERSION%' &&
             activate yellowbrick &&
             conda install --file tests/requirements.txt &&
             python -m nltk.downloader popular
@@ -83,7 +82,12 @@ test_script:
             )"
 
 after_test:
-    - "python setup.py bdist_wheel"
+    - cmd: "IF '%MINICONDA_VERSION%'=='' (
+              python setup.py bdist_wheel
+            ) ELSE (
+              activate yellowbrick &&
+              python setup.py bdist_wheel
+            )"
 
 artifacts:
     - path: dist\*
