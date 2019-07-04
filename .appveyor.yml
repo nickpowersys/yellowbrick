@@ -76,9 +76,11 @@ build: off
 
 test_script:
     - cmd: "IF '%MINICONDA_VERSION%'=='' (
-              activate yellowbrick
+              activate yellowbrick &&
+              python setup.py test
+            ) ELSE (
+              python setup.py test
             )"
-    - "python setup.py test"
 
 after_test:
     - "python setup.py bdist_wheel"
