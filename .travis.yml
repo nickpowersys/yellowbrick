@@ -37,7 +37,7 @@ install:
       echo "Creating Anaconda Python $ANACONDA conda environment";
       conda update -n base conda;
       conda config --add channels conda-forge;
-      conda config --add channels conda-forge/labels/testing;
+      conda config --add channels conda-forge/label/testing;
       activate;
       conda create -n yellowbrick python=$ANACONDA;
       source activate yellowbrick;
