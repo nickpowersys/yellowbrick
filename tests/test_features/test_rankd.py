@@ -23,6 +23,8 @@ import numpy.testing as npt
 
 from tests.base import IS_WINDOWS_OR_CONDA, VisualTestCase
 
+IS_WINDOWS_OR_CONDA = False # Test by ignoring xfail
+
 from yellowbrick.datasets import load_occupancy
 from yellowbrick.features.rankd import *
 from yellowbrick.features.rankd import kendalltau
