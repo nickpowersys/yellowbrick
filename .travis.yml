@@ -35,6 +35,7 @@ install:
       export BASE_PYTHON=`python -c 'import sys; version=sys.version_info[:3]; print("{0}.{1}.{2}".format(*version))'`;
       echo "Base Anaconda Python is $BASE_PYTHON";
       echo "Creating Anaconda Python $ANACONDA conda environment";
+      conda update -n base conda;
       conda config --add channels conda-forge;
       conda config --add channels conda-forge/label/testing;
       conda env create -f tests/requirements.txt -n yellowbrick python=$ANACONDA;
@@ -44,7 +45,7 @@ install:
 
 script: 
 - python -m nltk.downloader popular
-- make test
+- pytest tests/test_features/test_rankd.py
 
 after_success: coveralls
 
