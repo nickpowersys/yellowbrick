@@ -2,11 +2,11 @@ dist: xenial
 language: python
 matrix:
   include:
-    - name: "Python 3.6 on Xenial Linux"
-      python: '3.6'
+    #- name: "Python 3.6 on Xenial Linux"
+    #  python: '3.6'
 
-    - name: "Python 3.7 on Xenial Linux"
-      python: '3.7'
+    #- name: "Python 3.7 on Xenial Linux"
+    #  python: '3.7'
 
     - name: "Miniconda 3.6 on Xenial Linux"
       env: ANACONDA="3.6"
@@ -36,6 +36,7 @@ install:
       echo "Base Anaconda Python is $BASE_PYTHON";
       echo "Creating Anaconda Python $ANACONDA conda environment";
       conda config --add channels conda-forge;
+      conda config --add channels conda-forge/label/testing;
       conda env create -f tests/requirements.txt -n yellowbrick python=$ANACONDA;
       source activate yellowbrick;
       conda install coveralls;
