@@ -56,17 +56,18 @@ install:
             python -m pip install -U pip &&
             python -m pip install -U wheel &&
             python -m pip install -U -r requirements.txt &&
-            python -m pip install -U -r tests/requirements.txt
+            python -m pip install -U -r tests/requirements.txt &&
+            python -m nltk.downloader popular
           ) ELSE (
             conda config --set always_yes true &&
             conda config --add channels conda-forge &&
             conda config --add channels conda-forge/label/testing &&
             conda update --quiet conda &&
             activate &&
-            conda info --all &&
             conda create --quiet --name yellowbrick python=%PYTHON_VERSION% &&
             activate yellowbrick &&
             conda install --file tests/requirements.txt &&
+            conda info &&
             python -m nltk.downloader popular
           )"
 
